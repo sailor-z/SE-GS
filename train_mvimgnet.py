@@ -40,8 +40,6 @@ from tqdm import tqdm
 from argparse import ArgumentParser, Namespace
 from arguments import ModelParams, PipelineParams, OptimizationParams
 
-# torch.hub.set_dir("/scratch/cvlab/home/chzhao/ModelZoo/pretrained_models")
-
 np.random.seed(0)
 random.seed(0)
 torch.manual_seed(0)
