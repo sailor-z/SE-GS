@@ -1,0 +1,12 @@
+python train_mvimgnet.py -m './exp/mvimgnet' --data_path "./mvimgnet" --resolution 512 --eval --num_views 5 --dataset 'mvimgnet' \
+--iterations 10000 --position_lr_max_steps 10000 \
+--densify_until_iter 10000 \
+--end_sample_pseudo 10000 \
+--densify_grad_threshold 0.0005 \
+--gaussiansN 2 \
+--coprune --coprune_threshold 5 \
+--coreg --sample_pseudo_interval 1 \
+--start_sample_pseudo 500 \
+--end_sample_pseudo 10000 \
+--position_lr_init 0.00016 \
+--position_lr_final 0.00016 
