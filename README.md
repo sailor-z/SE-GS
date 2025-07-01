@@ -43,8 +43,7 @@ bash scripts/run_llff.sh
 
 ```
 
-
-
+---
 
 ## ✅ To Do
 
@@ -52,6 +51,8 @@ bash scripts/run_llff.sh
 - Evaluation on Mip-Nerf360
 - Evaluation on DTU
 - Evaluation on MvImgNet
+
+---
 
 ## 📄 Citation
 
