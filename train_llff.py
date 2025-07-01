@@ -40,8 +40,6 @@ from tqdm import tqdm
 from argparse import ArgumentParser, Namespace
 from arguments import ModelParams, PipelineParams, OptimizationParams
 
-torch.hub.set_dir("/scratch/cvlab/home/chzhao/ModelZoo/pretrained_models")
-
 np.random.seed(0)
 random.seed(0)
 torch.manual_seed(0)
@@ -138,23 +136,8 @@ def training_scene(dataset, opt, pipe, args):
 
     training_views = scene.getTrainCameras().copy()
 
-    pseudo_views = generate_pseudo_views(training_views, num_views=10000)
-    pseudo_val_views = []
-    R_dis, T_dis = zip(*[get_cam_dis(view, training_views) for view in training_views])
-    T_dis = torch.cat(T_dis).flatten(0)
-    radius = T_dis[T_dis!=0].min()
-
-    while len(pseudo_val_views) < args.num_val:
-        idx = randint(0, len(pseudo_views)-1)
-        R_dis, T_dis = get_cam_dis(pseudo_views[idx], training_views)
-        R_dis, T_dis = R_dis.min(), T_dis.min()
-
-        if R_dis > 15 or T_dis > 0.5 * radius:
-            continue
-
-        pseudo_val_views.append(pseudo_views[idx])
-        pseudo_views.pop(idx)
-
+    pseudo_views = scene.getPseudoCameras().copy()
+    pseudo_val_views = [pseudo_views.pop(randint(0, len(pseudo_views)-1)) for i in range(args.num_val)]
     pseudo_val_imgs = [[] for i in range(args.num_val)]
 
     noise_until_iter = opt.iterations - args.noise_interval

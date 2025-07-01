@@ -22,8 +22,6 @@ from tqdm import tqdm
 from utils.image_utils import psnr, avge
 from argparse import ArgumentParser
 
-torch.hub.set_dir("/scratch/cvlab/home/chzhao/ModelZoo/pretrained_models")
-
 def readImages(renders_dir, gt_dir):
     renders = []
     gts = []
