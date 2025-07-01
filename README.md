@@ -39,7 +39,7 @@ We evaluate our method on the LLFF, DTU, Mip-NeRF360, and MVImgNet datasets. Not
 #### Train and Test
 
 ```
-bash scripts/run_llff.sh
+bash scripts/run_llff.sh your data path
 
 ```
 
