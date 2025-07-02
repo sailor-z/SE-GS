@@ -31,16 +31,14 @@ We evaluate our method on the LLFF, DTU, Mip-NeRF360, and MVImgNet datasets. Not
 
 3. Run COLMAP to initialize point clouds and camera parameters:
 
-    ```
+    ```bash
     python tools/colmap_llff.py
-
     ```
 
 #### Train and Test
 
-```
+```bash
 bash scripts/run_llff.sh {your data path}
-
 ```
 
 ### Mip-Nerf360
@@ -53,18 +51,15 @@ bash scripts/run_llff.sh {your data path}
 
 3. Run COLMAP to initialize point clouds and camera parameters:
 
-    ```
+    ```bash
     python tools/colmap_360.py
-
     ```
 
 #### Train and Test
 
-```
+```bash
 bash scripts/run_360.sh {your data path}
-
 ```
-
 ---
 
 ## ✅ To Do
