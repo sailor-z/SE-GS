@@ -39,7 +39,29 @@ We evaluate our method on the LLFF, DTU, Mip-NeRF360, and MVImgNet datasets. Not
 #### Train and Test
 
 ```
-bash scripts/run_llff.sh your data path
+bash scripts/run_llff.sh {your data path}
+
+```
+
+### Mip-Nerf360
+
+#### Data Preparation
+
+1. Download Mip-Nerf360 from **[here](http://storage.googleapis.com/gresearch/refraw360/360_v2.zip)**.
+
+2. Update `base_path` in `tools/colmap_360.py` to the actual path of your data.
+
+3. Run COLMAP to initialize point clouds and camera parameters:
+
+    ```
+    python tools/colmap_360.py
+
+    ```
+
+#### Train and Test
+
+```
+bash scripts/run_360.sh {your data path}
 
 ```
 
@@ -48,7 +70,7 @@ bash scripts/run_llff.sh your data path
 ## ✅ To Do
 
 - ~~Evaluation on LLFF~~
-- Evaluation on Mip-Nerf360
+- ~~Evaluation on Mip-Nerf360~~
 - Evaluation on DTU
 - Evaluation on MvImgNet
 

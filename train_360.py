@@ -124,8 +124,20 @@ def training_scene(dataset, opt, pipe, args):
     training_views = scene.getTrainCameras().copy()
 
     ### pseudo validation set
-    pseudo_views = scene.getPseudoCameras().copy()
-    pseudo_val_views = [pseudo_views.pop(randint(0, len(pseudo_views)-1)) for i in range(args.num_val)]
+    pseudo_views = generate_pseudo_views(training_views, num_views=10000)
+
+    pseudo_val_views = []
+    while len(pseudo_val_views) < args.num_val:
+        idx = randint(0, len(pseudo_views)-1)
+        R_dis, _ = get_cam_dis(pseudo_views[idx], training_views)
+        R_dis = R_dis.min()
+
+        if R_dis > 15 or 0.1 < pseudo_views[idx].tau < 0.9:
+            continue
+
+        pseudo_val_views.append(pseudo_views[idx])
+        pseudo_views.pop(idx)
+
     pseudo_val_imgs = [[] for i in range(args.num_val)]
 
     noise_until_iter = opt.densify_until_iter - args.noise_interval
@@ -315,9 +327,9 @@ if __name__ == "__main__":
     parser.add_argument('--debug_from', type=int, default=-1)
     parser.add_argument('--data_path',  type=str, default=None)
     parser.add_argument('--detect_anomaly', action='store_true', default=False)
-    parser.add_argument("--save_iterations", nargs="+", type=int, default=[10000])
+    parser.add_argument("--save_iterations", nargs="+", type=int, default=[30000])
     parser.add_argument("--quiet", action="store_true")
-    parser.add_argument("--checkpoint_iterations", nargs="+", type=int, default=[10000])
+    parser.add_argument("--checkpoint_iterations", nargs="+", type=int, default=[30000])
     parser.add_argument("--start_checkpoint", type=str, default = None)
     parser.add_argument("--train_bg", action="store_true")
     parser.add_argument("--checkpoint", type=str, default = None)
