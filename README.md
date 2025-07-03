@@ -62,11 +62,33 @@ bash scripts/run_360.sh {your data path}
 ```
 ---
 
+### DTU
+
+#### Data Preparation
+
+1. Follow the instructions **[here](https://github.com/jiaw-z/CoR-GS)** to download and organize the dataset.
+2. Update `base_path` in `tools/colmap_dtu.py` to the actual path of your data.
+3. Run COLMAP to initialize point clouds and camera parameters:
+    ```bash
+    python tools/colmap_dtu.py
+    ```
+Note that COLMAP fails in some cases (`scan8,scan40,scan110` with 3 views; `scan21` with 6 views), so we use randomly initialized point clouds.
+
+#### Train and Test
+
+Update `mask_path` in `copy_mask_dtu.sh` accordingly, and then:
+
+```bash
+bash scripts/run_dtu.sh {your data path}
+```
+---
+
+
 ## ✅ To Do
 
 - ~~Evaluation on LLFF~~
 - ~~Evaluation on Mip-Nerf360~~
-- Evaluation on DTU
+- ~~Evaluation on DTU~~
 - Evaluation on MvImgNet
 
 ---
