@@ -1,5 +1,5 @@
 # Self-Ensembling Gaussian Splatting for Few-Shot Novel View Synthesis
-PyTorch implementation of "Self-Ensembling Gaussian Splatting for Few-Shot Novel View Synthesis", ICCV 2025.
+PyTorch implementation of "Self-Ensembling Gaussian Splatting for Few-Shot Novel View Synthesis", ICCV 2025, Oral.
 
 ---
 
