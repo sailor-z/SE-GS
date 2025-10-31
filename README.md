@@ -67,6 +67,7 @@ bash scripts/run_360.sh {your data path}
 #### Data Preparation
 
 1. Follow the instructions **[here](https://github.com/jiaw-z/CoR-GS)** to download and organize the dataset.
+    Download the masks from **[here](https://drive.google.com/file/d/1GZ3nHi0oWme0c0HBBPJ2dsU8IssD7yHb/view?usp=drive_link)**
 
 2. Update `base_path` in `tools/colmap_dtu.py` to the actual path of your data.
 
